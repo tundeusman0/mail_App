@@ -70,9 +70,53 @@ form{
 }
 .form-row textarea{
     padding-right: 20px;
+    flex: 1;
 }
 
 .form-row input{
     flex: 1;
     height:25px;
+}
+
+table.gridtable {
+        font-family: verdana, arial, sans-serif;
+        font-size: 13px;
+        color: #08851d;
+        border-width: 1px;
+        border-color: #0f0f0f;
+        border-collapse: collapse;
+    }
+
+    table.gridtable th {
+        text-transform: uppercase;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #dedede;
+    }
+
+    table.gridtable td {
+        color:#000000 ;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #ffffff;
+    }
+    table.gridtable a {
+      color: #000000;
+    }
+    table.gridtable a:hover {
+        font-weight: bold;
+        color:#2c0101;      
+    }
+@media screen and (min-width: 768px) {
+    table.gridtable th {
+        padding: 10px;
+        border-width: 3px;
+        font-size: 18px;
+        width: 10%;
+
+    }
+    table.gridtable td {
+        font-weight: 900;
+    }
 }

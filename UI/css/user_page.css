@@ -1,0 +1,60 @@
+section{
+    width:100%;
+    margin-top: 50px;
+}
+
+aside {
+    float: left;
+    margin-right: 10px;
+    height: 100%;
+    padding: 20px;
+    width: 20%;
+    background-color: #dfe6d8;
+
+}
+
+aside div{
+    margin: 10px 0 2px 0;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+aside div:hover{
+    background-color: #a0cf71;
+    border-radius: 20px;
+}
+
+article{
+    width: 70%;
+    margin-left: 120px;
+    margin-right: 50px;
+
+}
+
+button{
+    margin-left: 50%;
+}
+
+select{
+    height:25px;
+    flex: 1;    
+}
+
+#show{
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    button{
+    margin-left: 20%;
+    margin-right: 80%
+    }
+    article{
+    width: 70%;
+    margin-left: 350px;
+    }
+}

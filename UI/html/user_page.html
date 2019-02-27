@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MAIL_APP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./../css/main.css">
+    <link rel="stylesheet" href="./../css/user_page.css">
+
+
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>MAIL APP</h1>
+        </div>
+        <div class="left">
+            <h3>Developers MAIL APP</h3>
+        </div>
+    </header>
+    <section>
+        <aside>
+            <div id="panel" class="panel">Send email</div>
+            <div id="panel" class="panel">View inbox.</div>
+            <div id="panel" class="panel">View sent messages and retract a sent
+                message.</div>
+            <div id="panel" class="panel">Save a message as draft</div>
+            <div id="panel" class="panel">Check saved a messages</div>
+        </aside>
+
+        <article>
+            <div id="show">
+                <h1>Send email</h1>
+                <form action="POST" action="">
+                    <p>Either you send message by individuals or group</p>
+                    <div class="form-row">
+                        <label for="email-address">Enter email address you are sending to</label>
+                        <input type="text" name="email" id="">
+                    </div>
+                    <div class="form-row">
+                        <label for="add-user-to-group">Select Group</label>
+                        <select name="groups" id="">
+                            <option selected disabled>select a group</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="email-title">Email Title</label>
+                        <input type="text" name="email-title" id="">
+                    </div>
+                    <div class="form-row">
+                        <label for="email-address">Enter Message</label>
+                        <textarea name="message" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <button>submit</button>
+                </form>
+            </div>
+
+            <div id="show" style="display:block">
+                <h1>View Inbox</h1>
+                <div id="messages" name="messages"><a href="#/messageId"></a></div>
+            </div>
+
+            <div id="show">
+                <h1>View sent messages</h1>
+                <div id="sent_messages" name="sent_messages"></div>
+            </div>
+
+            <div id="show">
+                <h1>Save message as Draft</h1>
+                <form action="POST" action="">
+                    <div class="form-row">
+                        <label for="email-title">Email Title</label>
+                        <input type="text" name="email-title" id="">
+                    </div>
+                    <div class="form-row">
+                        <label for="email-address">Enter Message : </label>
+                        <textarea name="message" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <button>submit</button>
+                </form>
+            </div>
+
+            <div id="show">
+                <h1>View Saved Messages</h1>
+                <table class="gridtable">
+                    <thead>
+                        <tr>
+                            <th>Message Id</th>
+                            <th>Message Title</th>
+                            <th>View</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr id="" class="">
+                            <td>
+                                <p>id</p>
+                            </td>
+
+                            <td>
+                                <p>title</p>
+                            </td>
+
+                            <td><a href="/">View to Save or Edit</a></td>
+                            <td><a href="/">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </article>
+    </section>
+
+    <script src="./../js/user_page.js"></script>
+</body>
+
+</html>
