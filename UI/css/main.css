@@ -47,3 +47,32 @@ li a:hover{
 .centered-note{
     text-align: center;
 }
+
+.container{
+    max-width: 780px;
+    margin: auto;
+    margin-top: 50px;
+    background-color: #dfe6d8;
+}
+
+form{
+    margin: 10px 10px 30px 10px;
+    color: rgb(17, 78, 58);
+}
+
+.form-row{
+    display: flex;
+    padding: 10px 0;
+}
+
+.form-row label{
+    padding-right: 20px;
+}
+.form-row textarea{
+    padding-right: 20px;
+}
+
+.form-row input{
+    flex: 1;
+    height:25px;
+}
