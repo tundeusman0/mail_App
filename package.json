@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "eslint ."
+    "test": "mocha tests/*.test.js",
+    "eslint-test": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,5 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4"
-    
   }
 }
