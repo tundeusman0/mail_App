@@ -5,6 +5,6 @@ language: node_js
 node_js:
   - node
 
-script:
-  - npm run eslint-test
+after_success:
+  - npm run eslint-test 
   - npm run coverage
