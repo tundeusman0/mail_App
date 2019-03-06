@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nyc mocha tests/*.test.js",
     "test:watch": "mocha tests/*.test.js -watch",
-    "coverage": "nyc report --reporter=mocha-lcov-reporter | coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eslint-test": "eslint ."
   },
   "repository": {
