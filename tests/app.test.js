@@ -51,17 +51,17 @@ describe('POST /api/v1/messages', () => {
             .send(message)
             .expect(200)
             .expect((res) => {
-                expect(res.body.data[0]).toEqual(message)
+                expect(res.body.data[0]).toEqual(message);
             })
             .end((err) => {
                 if (err) return done(err);
                 done();
-            })
-    })
+            });
+    });
 
     // test POST message which should pass message not create with already exist id
     it('should not create when id already exists', (done) => {
-        let id = messages[0].id
+        const { id } = messages[0];
         request(app)
             .post('/api/v1/messages')
             .send({ id })
@@ -70,10 +70,8 @@ describe('POST /api/v1/messages', () => {
                 if (err) return done(err);
                 done();
             });
-
-    })
-
-})
+    });
+});
 
 // test GET messages
 describe("GET /messages", () => {
@@ -83,15 +81,14 @@ describe("GET /messages", () => {
             .get("/api/v1/messages")
             .expect(200)
             .expect((res) => {
-                expect(res.body.data.length).toBe(4)
+                expect(res.body.data.length).toBe(4);
             })
             .end((err) => {
                 if (err) return done(err);
                 done();
             });
-    })
-
-})
+    });
+});
 
 // test GET unread messages
 describe('GET /api/v1/messages/unread', () => {
@@ -101,15 +98,14 @@ describe('GET /api/v1/messages/unread', () => {
             .get('/api/v1/messages/unread')
             .expect(200)
             .expect((res) => {
-                expect(res.body.data[0].status).toBe("unread")
+                expect(res.body.data[0].status).toBe("unread");
             })
             .end((err) => {
                 if (err) return done(err);
                 done();
             });
-    })
-
-})
+    });
+});
 
 // test GET sent messages
 describe('GET /api/v1/messages/sent', () => {
@@ -119,15 +115,14 @@ describe('GET /api/v1/messages/sent', () => {
             .get('/api/v1/messages/sent')
             .expect(200)
             .expect((res) => {
-                expect(res.body.data[0].status).toBe("sent")
+                expect(res.body.data[0].status).toBe("sent");
             })
             .end((err) => {
                 if (err) return done(err);
                 done();
             });
-    })
-
-})
+    });
+});
 
 // test GET message by Id
 describe('GET /api/v1/messages/:messageId', () => {
@@ -137,13 +132,13 @@ describe('GET /api/v1/messages/:messageId', () => {
             .get("/api/v1/messages/111")
             .expect(200)
             .expect((res) => {
-                expect(res.body.data).toEqual([message])
+                expect(res.body.data).toEqual([message]);
             })
             .end((err) => {
                 if (err) return done(err);
                 done();
             });
-    })
+    });
 
     // test GET message which should pass to get 400 with message invalid id
     it('should return a 400 if message not found', (done) => {
@@ -154,9 +149,8 @@ describe('GET /api/v1/messages/:messageId', () => {
                 if (err) return done(err);
                 done();
             });
-    })
-
-})
+    });
+});
 
 // test DELETE message by Id
 describe('DELETE /api/v1/messages/:messageId', () => {
@@ -166,13 +160,13 @@ describe('DELETE /api/v1/messages/:messageId', () => {
             .delete("/api/v1/messages/111")
             .expect(200)
             .expect((res) => {
-                expect(res.body.data[0].message).toBe(message.message)
+                expect(res.body.data[0].message).toBe(message.message);
             })
             .end((err) => {
                 if (err) return done(err);
                 done();
             });
-    })
+    });
 
     // test DELETE message which should pass to not delete message with invalid id
     it('should not delete message with invalid id', (done) => {
@@ -183,6 +177,5 @@ describe('DELETE /api/v1/messages/:messageId', () => {
                 if (err) return done(err);
                 done();
             });
-    })
-
-})
+    });
+});
