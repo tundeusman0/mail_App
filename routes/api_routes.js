@@ -73,4 +73,21 @@ router.post('/api/v1/messages', (req, res) => {
     })
 
 })
+
+// GET messages
+router.get('/api/v1/messages', (req, res) => {
+    utils.getMessages().then(mssg => {
+        res.status(200).send({
+            status: 200,
+            data: mssg
+        })
+    }).catch(err => {
+        res.status(400).send({
+            status: 400,
+            error: "relevant-error-message"
+        })
+    })
+
+})
+
 module.exports = router;

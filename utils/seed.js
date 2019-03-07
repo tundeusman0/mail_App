@@ -33,8 +33,8 @@ const messages = [
         message: 'Andela is the best place where i will love to work',
         parentMessageId: 224,
         status: "unread",
-        senderId: 302,
-        receiverId: 202,
+        senderId: 101,
+        receiverId: 201,
     },
     {
         id: 302,
@@ -43,8 +43,8 @@ const messages = [
         message: 'unto the matter',
         parentMessageId: 224,
         status: "sent",
-        senderId: 302,
-        receiverId: 202,
+        senderId: 201,
+        receiverId: 101,
     },
 ];
 
