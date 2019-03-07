@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const utils = require('./../utils/utils');
 
-// POST signup 
+// POST signup
 router.post('/api/v1/auth/signup', (req, res) => {
     const {
  id, email, password, firstName, lastName, token,
@@ -28,151 +28,146 @@ router.post('/api/v1/auth/signup', (req, res) => {
 
 // POST login
 router.post('/api/v1/auth/login', (req, res) => {
-    let { email, password } = req.body
-    let login = {
-        email, password
-    }
+    const { email, password } = req.body;
+    const login = {
+        email, password,
+    };
 
-    utils.getUser(login).then(user => {
-        let token = user[0].token
+    utils.getUser(login).then((user) => {
+        const { token } = user[0];
         res.status(200).send({
             status: 200,
             data: [{
-                token
-            }]
-        })
-    }).catch(err => {
+                token,
+            }],
+        });
+    }).catch((err) => {
         res.status(400).send({
             status: 400,
-            error: err
-        })
-    })
-
-})
+            error: err,
+        });
+    });
+});
 
 // POST messages
 router.post('/api/v1/messages', (req, res) => {
-    const { subject, message, id, createdOn } = req.body
+    const {
+ subject, message, id, createdOn,
+} = req.body;
     const status = "read";
     const parentMessageId = 105;
     const messag = {
-        id, createdOn, subject, message, parentMessageId, status
-    }
-    utils.createMessage(messag).then(message => {
+        id, createdOn, subject, message, parentMessageId, status,
+    };
+    utils.createMessage(messag).then((mesage) => {
         res.status(200).send({
             status: 200,
             data: [{
-                ...message
-            }]
-        })
-    }).catch(err => {
+                ...mesage,
+            }],
+        });
+    }).catch((err) => {
         res.status(400).send({
             status: 400,
-            error: err
-        })
-    })
-
-})
+            error: err,
+        });
+    });
+});
 
 // GET messages
 router.get('/api/v1/messages', (req, res) => {
-    utils.getMessages().then(mssg => {
+    utils.getMessages().then((mssg) => {
         res.status(200).send({
             status: 200,
-            data: mssg
-        })
-    }).catch(err => {
+            data: mssg,
+        });
+    }).catch((err) => {
         res.status(400).send({
             status: 400,
-            error: err
-        })
-    })
-
-})
+            error: err,
+        });
+    });
+});
 
 // GET unread messages
 router.get('/api/v1/messages/unread', (req, res) => {
-    utils.getMessages().then(mssg => {
-        let unread = mssg.filter(message => message.status === "unread")
+    utils.getMessages().then((mssg) => {
+        const unread = mssg.filter(message => message.status === "unread");
         if (unread.length > 0) {
             res.status(200).send({
                 status: 200,
-                data: unread
-            })
+                data: unread,
+            });
         } else {
             res.status(400).send({
                 status: 400,
-                error: "no-message"
-            })
+                error: "no-message",
+            });
         }
-    }).catch(err => {
+    }).catch((err) => {
         res.status(400).send({
             status: 400,
-            error: err
-        })
-    })
-
-})
+            error: err,
+        });
+    });
+});
 
 // GET sent messages
 router.get('/api/v1/messages/sent', (req, res) => {
-    utils.getMessages().then(mssg => {
-        let unsent = mssg.filter(message => message.status === "sent")
+    utils.getMessages().then((mssg) => {
+        const unsent = mssg.filter(message => message.status === "sent");
         if (unsent.length > 0) {
             res.status(200).send({
                 status: 200,
-                data: unsent
-            })
+                data: unsent,
+            });
         } else {
             res.status(400).send({
                 status: 400,
-                error: "no-message"
-            })
+                error: "no-message",
+            });
         }
-
-    }).catch(err => {
+    }).catch((err) => {
         res.status(400).send({
             status: 400,
-            error: err
-        })
-    })
-
-})
+            error: err,
+        });
+    });
+});
 
 // GET message by Id
 router.get('/api/v1/messages/:messageId', (req, res) => {
-    let id = Number(req.params.messageId);
-    utils.getMessageById(id).then(message => {
+    const id = Number(req.params.messageId);
+    utils.getMessageById(id).then((message) => {
         res.status(200).send({
             status: 200,
-            data: message
-        })
-    }).catch(err => {
+            data: message,
+        });
+    }).catch((err) => {
         res.status(400).send({
             status: 400,
-            error: err
-        })
-    })
-
-})
+            error: err,
+        });
+    });
+});
 
 // DELETE message by Id
 router.delete('/api/v1/messages/:messageId', (req, res) => {
-    let id = Number(req.params.messageId);
-    utils.deleteMessageById(id).then(deleted => {
-        let message = deleted[0].message
+    const id = Number(req.params.messageId);
+    utils.deleteMessageById(id).then((deleted) => {
+        const { message } = deleted[0];
         res.status(200).send({
             status: 200,
             data: [{
-                message
-            }]
-        })
-    }).catch(err => {
+                message,
+            }],
+        });
+    }).catch((err) => {
         res.status(400).send({
             status: 400,
-            error: err
-        })
-    })
-})
+            error: err,
+        });
+    });
+});
 
 module.exports = router;
