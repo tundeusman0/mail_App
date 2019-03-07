@@ -65,7 +65,7 @@ const message = {
     subject: 'I love my life',
     message: 'Tunde usman loves his life',
     parentMessageId: 105,
-    status: "draft",
+    status: "read",
 };
 
 // Exporting
