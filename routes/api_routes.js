@@ -90,4 +90,28 @@ router.get('/api/v1/messages', (req, res) => {
 
 })
 
+// GET unread messages
+router.get('/api/v1/messages/unread', (req, res) => {
+    utils.getMessages().then(mssg => {
+        let unread = mssg.filter(message => message.status === "unread")
+        if (unread.length > 0) {
+            res.status(200).send({
+                status: 200,
+                data: unread
+            })
+        } else {
+            res.status(400).send({
+                status: 400,
+                error: "relevant-error-message"
+            })
+        }
+    }).catch(err => {
+        res.status(400).send({
+            status: 400,
+            error: "relevant-error-message"
+        })
+    })
+
+})
+
 module.exports = router;
