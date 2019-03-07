@@ -18,10 +18,10 @@ router.post('/api/v1/auth/signup', (req, res) => {
                 token,
             }],
         });
-    }).catch(() => {
+    }).catch((err) => {
         res.status(400).send({
             status: 400,
-            error: "relevant-error-message",
+            error: err,
         });
     });
 });
@@ -44,7 +44,7 @@ router.post('/api/v1/auth/login', (req, res) => {
     }).catch(err => {
         res.status(400).send({
             status: 400,
-            error: "relevant-error-message"
+            error: err
         })
     })
 
@@ -68,7 +68,7 @@ router.post('/api/v1/messages', (req, res) => {
     }).catch(err => {
         res.status(400).send({
             status: 400,
-            error: "relevant-error-message"
+            error: err
         })
     })
 
@@ -84,7 +84,7 @@ router.get('/api/v1/messages', (req, res) => {
     }).catch(err => {
         res.status(400).send({
             status: 400,
-            error: "relevant-error-message"
+            error: err
         })
     })
 
@@ -102,13 +102,13 @@ router.get('/api/v1/messages/unread', (req, res) => {
         } else {
             res.status(400).send({
                 status: 400,
-                error: "relevant-error-message"
+                error: "no-message"
             })
         }
     }).catch(err => {
         res.status(400).send({
             status: 400,
-            error: "relevant-error-message"
+            error: err
         })
     })
 
@@ -126,14 +126,14 @@ router.get('/api/v1/messages/sent', (req, res) => {
         } else {
             res.status(400).send({
                 status: 400,
-                error: "relevant-error-message"
+                error: "no-message"
             })
         }
 
     }).catch(err => {
         res.status(400).send({
             status: 400,
-            error: "relevant-error-message"
+            error: err
         })
     })
 
@@ -150,10 +150,29 @@ router.get('/api/v1/messages/:messageId', (req, res) => {
     }).catch(err => {
         res.status(400).send({
             status: 400,
-            error: "relevant-error-message"
+            error: err
         })
     })
 
+})
+
+// DELETE message by Id
+router.delete('/api/v1/messages/:messageId', (req, res) => {
+    let id = Number(req.params.messageId);
+    utils.deleteMessageById(id).then(deleted => {
+        let message = deleted[0].message
+        res.status(200).send({
+            status: 200,
+            data: [{
+                message
+            }]
+        })
+    }).catch(err => {
+        res.status(400).send({
+            status: 400,
+            error: err
+        })
+    })
 })
 
 module.exports = router;
