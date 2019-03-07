@@ -114,4 +114,30 @@ router.get('/api/v1/messages/unread', (req, res) => {
 
 })
 
+// GET sent messages
+router.get('/api/v1/messages/sent', (req, res) => {
+    utils.getMessages().then(mssg => {
+        let unsent = mssg.filter(message => message.status === "sent")
+        if (unsent.length > 0) {
+            res.status(200).send({
+                status: 200,
+                data: unsent
+            })
+        } else {
+            res.status(400).send({
+                status: 400,
+                error: "relevant-error-message"
+            })
+        }
+
+    }).catch(err => {
+        res.status(400).send({
+            status: 400,
+            error: "relevant-error-message"
+        })
+    })
+
+
+})
+
 module.exports = router;
