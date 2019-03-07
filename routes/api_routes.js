@@ -137,6 +137,22 @@ router.get('/api/v1/messages/sent', (req, res) => {
         })
     })
 
+})
+
+// GET message by Id
+router.get('/api/v1/messages/:messageId', (req, res) => {
+    let id = Number(req.params.messageId);
+    utils.getMessageById(id).then(message => {
+        res.status(200).send({
+            status: 200,
+            data: message
+        })
+    }).catch(err => {
+        res.status(400).send({
+            status: 400,
+            error: "relevant-error-message"
+        })
+    })
 
 })
 
