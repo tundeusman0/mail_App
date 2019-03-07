@@ -13,3 +13,5 @@ app.use('/', route);
 app.listen(3000, () => {
     console.log("connected to port 3000");
 });
+
+module.exports = app;
