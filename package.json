@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start":"node app.js",
     "test": "nyc mocha tests/*.test.js",
     "test:watch": "mocha tests/*.test.js -watch",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -13,6 +14,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tundeusman0/mail_App.git"
+  },
+  "engines": {
+    "node": "10.0.0"
   },
   "author": "Tunde Usman",
   "license": "ISC",
