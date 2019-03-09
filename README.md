@@ -96,6 +96,6 @@ To run eslint test:
 	</tr>
 </table>
 
-## Authors
+## Author
 
 * **Idowu Usman Babatunde**
