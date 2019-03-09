@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start":"node app.js",
-    "test": "nyc mocha tests/*.test.js",
+    "test": "nyc mocha tests/*.test.js --exit",
     "test:watch": "mocha tests/*.test.js -watch",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eslint-test": "eslint .",
