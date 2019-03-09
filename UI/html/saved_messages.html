@@ -12,7 +12,7 @@
 <body>
     <header>
         <div>
-            <h1>MAIL APP</h1>
+            <h1> <a style="text-decoration:none;color: #66fc02" href="/https://tundeusman0.github.io/mail_App"> MAIL APP </a></h1>
         </div>
         <div class="left">
             <h3>Developers MAIL APP</h3>
@@ -20,29 +20,33 @@
     </header>
     <div class="container">
     
-        <form action="POST" action="">
+        <form action="POST" action="/mail_App/UI/html/saved_messages.html">
             <p>Either you send message to individuals or group</p>
             <div class="form-row">
                 <label for="email-address">Enter email address you are sending to : </label>
-                <input type="text" name="email" id="">
+                <input type="email" required name="email" id="">
             </div>
             <div class="form-row">
                 <label for="add-user-to-group">Select Group : </label>
-                <select name="groups" id="">
-                    <option selected disabled>select a group</option>
+                <select required name="groups" id="">
+                    <option value="" hidden>select a group</option>
+                    <option value="">select a group</option>
                 </select>
             </div>
             <div class="form-row">
                 <label for="email-title">Email Title</label>
-                <input type="text" name="email-title" id="">
+                <input type="text" required name="email-title" id="">
             </div>
             <div class="form-row">
                 <label for="email-address">Enter Message : </label>
-                <textarea name="message" id="" cols="30" rows="10"></textarea>
+                <textarea name="message" required id="" cols="30" rows="10"></textarea>
             </div>
             <button>Send</button>
         </form>
 
     </div>
+    <footer>
+        <p>Copyright &copy; Andela Bootcamp</p>
+    </footer>
 </body>
 </html>

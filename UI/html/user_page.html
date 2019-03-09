@@ -15,12 +15,15 @@
 <body>
     <header>
         <div>
-            <h1>MAIL APP</h1>
+            <h1> <a style="text-decoration:none;color: #66fc02" href="/https://tundeusman0.github.io/mail_App"> MAIL APP </a></h1>
         </div>
         <div class="left">
             <h3>Developers MAIL APP</h3>
         </div>
     </header>
+    <div class="reset-pass">
+        <a href="/mail_App/UI/html/user_reset_password.html">Reset Password</a>
+    </div>
     <section>
         <aside>
             <div id="panel" class="panel">Send email</div>
@@ -34,25 +37,26 @@
         <article>
             <div id="show">
                 <h1>Send email</h1>
-                <form action="POST" action="">
+                <form action="POST" action="/mail_App/UI/html/user_page.html">
                     <p>Either you send message by individuals or group</p>
                     <div class="form-row">
                         <label for="email-address">Enter email address you are sending to</label>
-                        <input type="text" name="email" id="">
+                        <input type="email" required name="email" id="">
                     </div>
                     <div class="form-row">
                         <label for="add-user-to-group">Select Group</label>
-                        <select name="groups" id="">
-                            <option selected disabled>select a group</option>
+                        <select required name="groups" id="">
+                            <option value="" hidden>select a group</option>
+                            <option value="">select a group</option>
                         </select>
                     </div>
                     <div class="form-row">
                         <label for="email-title">Email Title</label>
-                        <input type="text" name="email-title" id="">
+                        <input type="text" required name="email-title" id="">
                     </div>
                     <div class="form-row">
                         <label for="email-address">Enter Message</label>
-                        <textarea name="message" id="" cols="30" rows="10"></textarea>
+                        <textarea name="message" required id="" cols="30" rows="10"></textarea>
                     </div>
                     <button>submit</button>
                 </form>
@@ -60,7 +64,10 @@
 
             <div id="show" style="display:block">
                 <h1>View Inbox</h1>
-                <div id="messages" name="messages"><a href="#/messageId"></a></div>
+                <div id="messages" name="messages"><a href="/mail_App/UI/html/read_inbox.html"><h3>message1
+                    message1message1message1message1message1message1</h3></a></div>
+                <div id="messages" name="messages"><a href="/mail_App/UI/html/read_inbox.html"><h3>message2</h3></a></div>
+                <div id="messages" name="messages"><a href="/mail_App/UI/html/read_inbox.html"><h3>message3</h3></a></div>
             </div>
 
             <div id="show">
@@ -70,14 +77,14 @@
 
             <div id="show">
                 <h1>Save message as Draft</h1>
-                <form action="POST" action="">
+                <form action="POST" action="/mail_App/UI/html/user_page.html">
                     <div class="form-row">
                         <label for="email-title">Email Title</label>
-                        <input type="text" name="email-title" id="">
+                        <input type="text" required name="email-title" id="">
                     </div>
                     <div class="form-row">
                         <label for="email-address">Enter Message : </label>
-                        <textarea name="message" id="" cols="30" rows="10"></textarea>
+                        <textarea name="message" id="" required cols="30" rows="10"></textarea>
                     </div>
                     <button>submit</button>
                 </form>
@@ -98,11 +105,13 @@
                     <tbody>
                         <tr id="" class="">
                             <td>
-                                <p>id</p>
+                                <p>13342454</p>
                             </td>
 
                             <td>
-                                <p>title</p>
+                                <div id="messages" name="messages"><a href="/mail_App/UI/html/saved_messages.html">
+                                        <h3>message1</h3>
+                                    </a></div>
                             </td>
 
                             <td><a href="/">View to Save or Edit</a></td>
@@ -115,7 +124,9 @@
 
         </article>
     </section>
-
+    <footer style="position:none">
+        <p>Copyright &copy; Andela Bootcamp</p>
+    </footer>
     <script src="./../js/user_page.js"></script>
 </body>
 

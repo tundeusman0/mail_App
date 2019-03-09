@@ -5,6 +5,9 @@ const route = require('./routes/api_routes');
 // init App
 const app = express();
 
+// static display of UI pages
+app.use(express.static(__dirname + '/UI'))
+
 // heroku Port
 const port = process.env.PORT || 3000
 

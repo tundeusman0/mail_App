@@ -2,15 +2,25 @@ body{
     background-color: #f1f8ea;
 }
 
+/* header */
 header{
     background-color: #dfe6d8;
-    color: rgb(86, 148, 119);
+    color: #66fc02;
+    background-color: rgb(0,128,128);
     display: flex;
+}
+
+header :hover{
+    color: #ffffff;
 }
 
 header div{
     flex: 1;
     margin: 0 25px 0 25px;
+}
+
+a{
+    text-decoration-style: none;
 }
 
 nav{
@@ -27,16 +37,20 @@ nav ul{
     
 }
 
+/* licks link */
 nav ul li a{
     margin: 0px 30px 50px 30px;
     text-decoration: none;
-    color: rgb(0, 155, 103);
     font-weight: bold;
+    color: #00606d;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 30px;
 }
 
 li a:hover{
-    color: #07b7ce;
-    font-size: 20px;
+    color: #016907;
+    font-size: 31px;
 }
 
 .left{
@@ -46,6 +60,10 @@ li a:hover{
 
 .centered-note{
     text-align: center;
+    border-radius: 50px;
+    color: #228B22;
+    font-weight: bold;
+    font-weight:1500;
 }
 
 .container{
@@ -53,11 +71,22 @@ li a:hover{
     margin: auto;
     margin-top: 50px;
     background-color: #dfe6d8;
+    opacity: 0.9;
 }
 
+/* form */
 form{
     margin: 10px 10px 30px 10px;
     color: rgb(17, 78, 58);
+}
+/* form button */
+form > button{
+    padding: 3px;
+    margin-left: 150px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    color: #228B22;
+    font-size: 20px;
 }
 
 .form-row{
@@ -78,6 +107,7 @@ form{
     height:25px;
 }
 
+/* table */
 table.gridtable {
         font-family: verdana, arial, sans-serif;
         font-size: 13px;
@@ -108,7 +138,43 @@ table.gridtable {
         font-weight: bold;
         color:#2c0101;      
     }
+
+/* footer */
+footer{
+    margin-top: 20px;
+    color:rgb(250, 250, 250);
+    background-color: rgb(0,128,128);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+/* footer paragragh */
+footer > p {
+    margin-top: 20px;
+}
+
+/* larger screen */
 @media screen and (min-width: 768px) {
+    /* body */
+    body{
+        background-image: url(../images/bench-accounting-49025-unsplash.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; 
+    }
+    /* licks */
+    nav ul li a{
+        background-color: #dfe6d8;
+        opacity: 0.75;
+    }
+    /* certered message */
+    .centered-note{
+        background-color: #dfe6d8;
+        opacity: 0.75;
+    }
+    /* table head */
     table.gridtable th {
         padding: 10px;
         border-width: 3px;
@@ -116,7 +182,19 @@ table.gridtable {
         width: 10%;
 
     }
+    /* table data */
     table.gridtable td {
         font-weight: 900;
     }
+    /* form button */
+    form > button{
+    padding: 5px;
+    margin-left: 300px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #228B22;
+    font-size: 20px;
+}
+    
+
 }
