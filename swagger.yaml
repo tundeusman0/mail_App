@@ -1,0 +1,377 @@
+swagger: "2.0"
+info:
+  description: "API for MAIL_APP"
+  version: "1.0.0"
+  title: "Mail App"
+  contact:
+    email: "t.mani4bus@gmail.com"
+  license:
+    name: "Heroku"
+    url: "hhttps://thawing-mesa-22307.herokuapp.com"
+host: "petstore.swagger.io"
+basePath: "/api/v1"
+tags:
+- name: "auth"
+  description: "Operations about user accounts"
+- name: "message"
+  description: "Operations about messages"
+schemes:
+- "https"
+- "http"
+paths:
+  /auth/signup:
+    post:
+      tags:
+      - "auth"
+      summary: "Create user"
+      description: "Creates a new user account"
+      operationId: "addUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "user to sign up"
+        required: true
+        schema:
+            type: "object"
+            required:
+              - "id"
+              - "email"
+              - "password"
+              - "token"
+              - "firstName"
+              - "lastName"
+            properties:
+              id:
+                type: "number"
+              email:
+                type: "string"
+              password:
+                type: "string"
+              token:
+                type: "string"
+              firstName:
+                type: "string"
+              lastName:
+                type: "string"
+      responses:
+        200:
+          description: "User successfully created"
+          examples:
+            application/json:
+              message: "User successfully created"
+              user:
+                id: 1
+                firstname: "Tunde" 
+                lastName: "Usman"
+                email: "tUsman@email.com"
+                token: "IUzI1NiIsInR5cCI"
+              status: "success"
+        400:
+          description: "Invalid input"
+  /auth/signin:
+    post:
+      tags:
+      - "auth"
+      summary: "sign in a user"
+      description: "Sign in user into the application"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "user"
+        in: "body"
+        description: "user to sign in"
+        schema:
+          type: "object"
+          required:
+            - "email"
+            - "password"
+          properties:
+            email:
+              type: "string"
+            password:
+              type: "string"
+      responses:
+        200:
+          description: "User signed in"
+          examples:
+            application/json:
+              message: "User successfully signed in"
+              user:
+                id: 1
+                name: "Tunde" 
+                lastName: "Usman"
+                email: "tUsman@email.com"
+                token: "IUzI1NiIsInR5cCI"
+              status: "success"
+        400:
+          description: "Invalid Input"
+  /messages:
+    get:
+      tags:
+      - "messages"
+      summary: "List all messages"
+      description: "Get all messages in the application"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "Authorization"
+          in: "header"
+          description: "an authorization header"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "successful found messages"
+          examples:
+            application/json:
+              messages:
+                - id: 202
+                  createdOn: "2/03/2019"
+                  subject: 'My love for Andela'
+                  message: "Andela is the best place where i will love to work"
+                  parentMessageId: 224
+                  status: "unread"
+                  senderId: 101
+                  receiverId: 201
+                - id: 302
+                  createdOn: "6/03/2019"
+                  subject: "My love for Andela"
+                  message: "unto the matter"
+                  parentMessageId: 224
+                  status: "sent"
+                  senderId: 201
+                  receiverId: 101
+              message: "Messages found"
+              status: "success"
+          schema:
+            type: "object"
+        400:
+          description: "No Messages found"
+          examples:
+            application/json:
+              error: true
+              status: "error"
+              message: "No messages"
+    post:
+      tags:
+        - "messages"
+      summary: "Posts a new message"
+      description: "Add message to app"
+      consumes:
+        - "application/x-www-form-urlencoded"
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "Authorization"
+          in: "header"
+          description: "an authorization header"
+          required: true
+          type: "string"
+        - name: "Subject"
+          in: "formData"
+          description: "Subject of message to post"
+          required: true
+          type: "string"
+        - name: "Message"
+          in: "formData"
+          description: "Describes the message"
+          required: true
+          type: "string"
+        - name: "CreatedOn"
+          in: "formData"
+          description: "When the message was created"
+          required: true
+          type: "string"
+        - name: "Status"
+          in: "formData"
+          description: "Message Status either sent draft or unread"
+          type: "string"
+      responses:
+        200:
+          description: "Message was added successfully"
+          examples:
+            application/json:
+              message: "Successfully added message"
+              -id: 1
+              Subject: "I love my life"
+              Message: "Tunde usman loves his life"
+              CreatedOn: "2/04/2019"
+              Status: "unread"
+              status: "success"
+        400:
+          description: "Invalid input"
+          examples:
+            application/json:
+              error: true
+              message: "Message name is required"
+              status: "error"
+      
+  /messages/unread:
+    get:
+      tags:
+      - "messages"
+      summary: "Get an unread messages"
+      description: "MGet an unread messages in the application"
+      consumes:
+        - "application/json"
+        - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        description: "an authorization header"
+        required: true
+        type: "string"
+      - name: "Subject"
+        in: "formData"
+        description: "Subject of message to post"
+        required: true
+        type: "string"
+      - name: "Message"
+        in: "formData"
+        description: "Describes the message"
+        required: true
+        type: "string"
+      - name: "CreatedOn"
+        in: "formData"
+        description: "When the message was created"
+        required: true
+        type: "string"
+      - name: "Status"
+        in: "formData"
+        description: "Message Status is unread"
+        type: "string"
+      responses:
+        200:
+          description: "Message found"
+          examples:
+            application/json:
+              message: "Message succesfully found"
+              meal:
+                id: 1
+                Subject: "I love my life"
+                Message: "Tunde usman loves his life"
+                CreatedOn: "2/04/2019"
+                Status: "unread"
+              status: "success"
+        400:
+          description: "Invalid tag value"
+
+  /messages/sent:
+    get:
+      tags:
+      - "messages"
+      summary: "Get an sent messages"
+      description: "MGet an sent messages in the application"
+      consumes:
+        - "application/json"
+        - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        description: "an authorization header"
+        required: true
+        type: "string"
+      - name: "Subject"
+        in: "formData"
+        description: "Subject of message to post"
+        required: true
+        type: "string"
+      - name: "Message"
+        in: "formData"
+        description: "Describes the message"
+        required: true
+        type: "string"
+      - name: "CreatedOn"
+        in: "formData"
+        description: "When the message was created"
+        required: true
+        type: "string"
+      - name: "Status"
+        in: "formData"
+        description: "Message Status is sent"
+        type: "string"
+      responses:
+        200:
+          description: "Message found"
+          examples:
+            application/json:
+              message: "Message succesfully found"
+              meal:
+                id: 1
+                Subject: "I love my life"
+                Message: "Tunde usman loves his life"
+                CreatedOn: "2/04/2019"
+                Status: "sent"
+              status: "success"
+        400:
+          description: "Invalid tag value"
+  /messages/{messagesId}:
+    get:
+      tags:
+      - "messages"
+      summary: "Get a message by ID"
+      description: "Get a message by Id in the application"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "messagesId"
+        in: "path"
+        description: "ID of pet to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Message found"
+          examples:
+            application/json:
+              message: "Message succesfully found"
+              meal:
+                id: 1
+                Subject: "I love my life"
+                Message: "Tunde usman loves his life"
+                CreatedOn: "2/04/2019"
+                Status: "unread"
+              status: "success"
+        400:
+          description: "Invalid input"
+    delete:
+      tags:
+      - "messages"
+      summary: "Deletes a message"
+      description: "Deletes a message from the application"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "messagesId"
+        in: "path"
+        description: "Messages id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Message successfully deleted"
+        404:
+          description: "Message not found"
+      
