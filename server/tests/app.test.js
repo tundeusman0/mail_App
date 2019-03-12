@@ -1,11 +1,11 @@
-const expect = require('expect');
-const request = require('supertest');
+import expect from "expect";
+import request from "supertest";
 
-const {
+import {
  users, messages, user, message,
-} = require('./../utils/seed');
+} from "../utils/seed";
 
-const app = require('./../app');
+import app from "../app";
 
 
 // test API

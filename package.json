@@ -4,9 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start":"node app.js",
-    "test": "nyc mocha tests/*.test.js --exit",
-    "test:watch": "mocha tests/*.test.js -watch",
+    "start": "node build/app.js",
+    "build": "babel server --out-dir build",
+    "test": "nyc mocha build/tests/*.test.js --exit",
+    "test:watch": "mocha build/tests/*.test.js -watch",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eslint-test": "eslint .",
     "eslint-test:fix": "eslint . --fix"
@@ -25,6 +26,11 @@
   },
   "homepage": "https://tundeusman0.github.io/mail_App",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
     "coveralls": "^3.0.3",
     "eslint": "^5.14.1",
     "eslint-config-airbnb-base": "^13.1.0",
