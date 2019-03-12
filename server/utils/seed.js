@@ -1,5 +1,5 @@
 // dummy data for users
-const users = [{
+export const users = [{
     id: 101,
     email: 'tundeusman1@gmail.com',
     firstName: 'Tunde',
@@ -16,7 +16,7 @@ const users = [{
 }];
 
 // dummy data for messages
-const messages = [
+export const messages = [
     {
         id: 102,
         createdOn: "2/03/2019",
@@ -49,7 +49,7 @@ const messages = [
 ];
 
 // single user dummy data
-const user = {
+export const user = {
     email: 'example@gmail.com',
     password: 'password',
     id: 333,
@@ -59,7 +59,7 @@ const user = {
 };
 
 // single message dummy data
-const message = {
+export const message = {
     id: 111,
     createdOn: "2/04/2019",
     subject: 'I love my life',
@@ -69,9 +69,9 @@ const message = {
 };
 
 // Exporting
-module.exports = {
-    users,
-    messages,
-    user,
-    message,
-};
+// module.exports = {
+//     users,
+//     messages,
+//     user,
+//     message,
+// };

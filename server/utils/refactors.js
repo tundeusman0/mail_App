@@ -1,4 +1,4 @@
-function getPromise(resolveOutput, condition, rejectOutput) {
+export default function getPromise(resolveOutput, condition, rejectOutput) {
     return new Promise((resolve, reject) => {
         if (condition) {
             resolve(resolveOutput);
@@ -7,7 +7,3 @@ function getPromise(resolveOutput, condition, rejectOutput) {
         }
     });
 }
-
-module.exports = {
-    getPromise,
-};

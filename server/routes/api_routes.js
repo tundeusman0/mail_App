@@ -1,7 +1,9 @@
-const express = require('express');
+import express from 'express';
+import {
+ addUser, getUser, createMessage, getMessageById, getMessages, deleteMessageById,
+} from "../utils/utils";
 
 const router = express.Router();
-const utils = require('./../utils/utils');
 
 // POST signup
 router.post('/api/v1/auth/signup', (req, res) => {
@@ -11,7 +13,7 @@ router.post('/api/v1/auth/signup', (req, res) => {
     const user = {
         id, email, password, firstName, lastName, token,
     };
-    utils.addUser(user).then(() => {
+    addUser(user).then(() => {
         res.status(200).send({
             status: 200,
             data: [{
@@ -33,7 +35,7 @@ router.post('/api/v1/auth/login', (req, res) => {
         email, password,
     };
 
-    utils.getUser(login).then((user) => {
+    getUser(login).then((user) => {
         const { token } = user[0];
         res.status(200).send({
             status: 200,
@@ -59,7 +61,7 @@ router.post('/api/v1/messages', (req, res) => {
     const messag = {
         id, createdOn, subject, message, parentMessageId, status,
     };
-    utils.createMessage(messag).then((mesage) => {
+    createMessage(messag).then((mesage) => {
         res.status(200).send({
             status: 200,
             data: [{
@@ -76,7 +78,7 @@ router.post('/api/v1/messages', (req, res) => {
 
 // GET messages
 router.get('/api/v1/messages', (req, res) => {
-    utils.getMessages().then((mssg) => {
+    getMessages().then((mssg) => {
         res.status(200).send({
             status: 200,
             data: mssg,
@@ -91,7 +93,7 @@ router.get('/api/v1/messages', (req, res) => {
 
 // GET unread messages
 router.get('/api/v1/messages/unread', (req, res) => {
-    utils.getMessages().then((mssg) => {
+    getMessages().then((mssg) => {
         const unread = mssg.filter(message => message.status === "unread");
         if (unread.length > 0) {
             res.status(200).send({
@@ -114,7 +116,7 @@ router.get('/api/v1/messages/unread', (req, res) => {
 
 // GET sent messages
 router.get('/api/v1/messages/sent', (req, res) => {
-    utils.getMessages().then((mssg) => {
+    getMessages().then((mssg) => {
         const unsent = mssg.filter(message => message.status === "sent");
         if (unsent.length > 0) {
             res.status(200).send({
@@ -138,7 +140,7 @@ router.get('/api/v1/messages/sent', (req, res) => {
 // GET message by Id
 router.get('/api/v1/messages/:messageId', (req, res) => {
     const id = Number(req.params.messageId);
-    utils.getMessageById(id).then((message) => {
+    getMessageById(id).then((message) => {
         res.status(200).send({
             status: 200,
             data: message,
@@ -154,7 +156,7 @@ router.get('/api/v1/messages/:messageId', (req, res) => {
 // DELETE message by Id
 router.delete('/api/v1/messages/:messageId', (req, res) => {
     const id = Number(req.params.messageId);
-    utils.deleteMessageById(id).then((deleted) => {
+    deleteMessageById(id).then((deleted) => {
         const { message } = deleted[0];
         res.status(200).send({
             status: 200,
