@@ -1,15 +1,10 @@
-// const expect = require('expect');
 import expect from "expect";
 import {
     users, messages, user, message,
-} from "./../utils/seed"
+} from "../utils/seed";
 import {
     addUser, getUser, createMessage, getMessageById, getMessages, deleteMessageById,
-} from "./../utils/utils"
-// const {
-//  users, messages, user, message,
-// } = require('./../utils/seed');
-// const utils = require('./../utils/utils');
+} from "../utils/utils";
 
 // to test utils
 describe('utils', () => {

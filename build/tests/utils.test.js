@@ -2,18 +2,14 @@
 
 var _expect = _interopRequireDefault(require("expect"));
 
-var _seed = require("./../utils/seed");
+var _seed = require("../utils/seed");
 
-var _utils = require("./../utils/utils");
+var _utils = require("../utils/utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-// const {
-//  users, messages, user, message,
-// } = require('./../utils/seed');
-// const utils = require('./../utils/utils');
 // to test utils
 describe('utils', function () {
   // test getUser which should return a user

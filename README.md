@@ -2,8 +2,7 @@
 Mail App is an application that allows users to exchange messages/information
 
 [![Build Status](https://travis-ci.com/tundeusman0/mail_App.svg?branch=gh-pages)](https://travis-ci.com/tundeusman0/mail_App)
-[![Coverage Status](https://coveralls.io/repos/github/tundeusman0/mail_App/badge.svg?branch=gh-pages)](https://coveralls.io/github/tundeusman0/mail_App?branch=gh-pages)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/97c54f2847f698fa0e5b/test_coverage)](https://codeclimate.com/github/tundeusman0/mail_App/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/tundeusman0/mail_App/badge.svg?branch=bg-travis-build-error-164516577)](https://coveralls.io/github/tundeusman0/mail_App?branch=bg-travis-build-error-164516577)
 [![Maintainability](https://api.codeclimate.com/v1/badges/97c54f2847f698fa0e5b/maintainability)](https://codeclimate.com/github/tundeusman0/mail_App/maintainability)
 
 View App: (https://tundeusman0.github.io/mail_App)
@@ -96,6 +95,6 @@ To run eslint test:
 	</tr>
 </table>
 
-## Authors
+## Author
 
 * **Idowu Usman Babatunde**
