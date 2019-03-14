@@ -1,5 +1,15 @@
 body{
     background-color: #f1f8ea;
+    background-image: url(../images/bench-accounting-49025-unsplash.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+
+/* html */
+html{
+    height: 100%;
 }
 
 /* header */
@@ -56,7 +66,7 @@ nav ul li a{
     color: #00606d;
     border-radius: 10px;
     margin-top: 20px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 li a:hover{
@@ -78,44 +88,79 @@ li a:hover{
 }
 
 .container{
-    max-width: 680px;
+    padding:10px;
+    max-width: 600px;
     margin: auto;
     margin-top: 20px;
+    margin-bottom: 20px;
     background-color: #dfe6d8;
     opacity: 0.9;
 }
-
-/* form */
-form{
-    margin: 10px 10px 30px 10px;
-    color: rgb(17, 78, 58);
+.message{
+    display:flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    background-color: white;
 }
-/* form button */
-form > button{
-    padding: 3px;
-    margin-left: 150px;
-    margin-bottom: 50px;
-    cursor: pointer;
-    color: #228B22;
-    font-size: 20px;
+.message:hover{
+    background-color: lightblue;
+}
+
+.form {
+    padding: 5%;
+    margin-bottom: 35px;
+    margin-left: 33px;
+}
+
+.warning{
+    color: rgb(185, 139, 11);
+}
+.label {
+    font-weight: bold;
+    text-align: left;
+    color: #065f06;
+    display: inline;
+}
+
+.label-block {
+    display: block;
+    padding-bottom: 5px;
+}
+
+
+.form 
+.btn {
+    margin: 2px auto 5px auto;
+}
+
+.form input,
+.form select,
+.form textarea {
+    border: 1px solid #4e4a4a;
+    border-radius: 3px;
+    color: #4e4a4a;
+    display: block;
+    width: 93%;
+    font-size: 16px;
+}
+
+.form input,
+.form select {
+    height: 24px;
 }
 
 .form-row{
-    display: flex;
-    padding: 10px 0;
+    padding: 10px;
+    width: 95%;
 }
-
+textarea {
+   resize: none;
+}
+label{
+    margin-bottom: 10px;
+}
 .form-row label{
-    padding-right: 20px;
-}
-.form-row textarea{
-    padding-right: 20px;
-    flex: 1;
-}
-
-.form-row input{
-    flex: 1;
-    height:25px;
+    margin-bottom: 10px;
 }
 
 /* table */
@@ -149,6 +194,9 @@ table.gridtable {
         font-weight: bold;
         color:#2c0101;      
     }
+.tbody{
+    padding: 10px;
+}
 
 /* footer */
 footer{
@@ -168,23 +216,23 @@ footer > p {
 
 /* larger screen */
 @media screen and (min-width: 768px) {
-    /* body */
-    body{
-        background-image: url(../images/bench-accounting-49025-unsplash.jpg);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover; 
+
+    html{
+        height:100%;
     }
+    
     /* licks */
     nav ul li a{
         background-color: #dfe6d8;
         opacity: 0.75;
     }
+
     /* certered message */
     .centered-note{
         background-color: #dfe6d8;
         opacity: 0.75;
     }
+
     /* table head */
     table.gridtable th {
         padding: 10px;
@@ -197,15 +245,29 @@ footer > p {
     table.gridtable td {
         font-weight: 900;
     }
-    /* form button */
-    form > button{
-    padding: 5px;
-    margin-left: 300px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    color: #228B22;
-    font-size: 20px;
+    
+    .form .btn {
+    margin: 2px auto auto 175px;
 }
     
-
 }
+.btn {
+    border-radius: 5px;
+    color: rgb(131, 145, 5);
+    background-color: #00606d;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    letter-spacing: .5px;
+    margin: 0;
+    text-transform: uppercase;
+    padding: 11px 30px;
+    margin-bottom: 22px;
+    font-size: 14px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.btn:hover {
+    background: rgb(0,128,128);
+}
+    

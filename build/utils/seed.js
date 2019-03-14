@@ -69,12 +69,5 @@ var message = {
   message: 'Tunde usman loves his life',
   parentMessageId: 105,
   status: "read"
-}; // Exporting
-// module.exports = {
-//     users,
-//     messages,
-//     user,
-//     message,
-// };
-
+};
 exports.message = message;

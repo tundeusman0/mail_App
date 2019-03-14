@@ -68,10 +68,3 @@ export const message = {
     status: "read",
 };
 
-// Exporting
-// module.exports = {
-//     users,
-//     messages,
-//     user,
-//     message,
-// };
