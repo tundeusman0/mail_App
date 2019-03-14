@@ -16,9 +16,7 @@ var _messages_routes = _interopRequireDefault(require("./routes/messages_routes"
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // init App
-var app = (0, _express.default)(); // static display of UI pages
-
-app.use(_express.default.static("".concat(__dirname, "/UI"))); // heroku Port
+var app = (0, _express.default)(); // heroku Port
 
 var port = process.env.PORT || 3000; // body Parser middleware
 
