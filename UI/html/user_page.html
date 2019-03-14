@@ -17,9 +17,6 @@
         <div>
             <h1> <a style="text-decoration:none;color: #66fc02" href="/mail_App"> MAIL APP </a></h1>
         </div>
-        <div class="left">
-            <h3>Developers MAIL APP</h3>
-        </div>
     </header>
     <div class="reset-pass">
         <a href="/mail_App/UI/html/user_reset_password.html">Reset Password</a>
@@ -28,48 +25,61 @@
     </div>
     <section>
         <aside>
-            <div id="panel" class="panel">Send email</div>
-            <div id="panel" class="panel">View inbox.</div>
-            <div id="panel" class="panel">View sent messages and retract a sent
-                message.</div>
+            <div id="panel" class="panel">Send Email</div>
+            <div id="panel" class="panel">View Messages</div>
+            <div id="panel" class="panel">View sent messages</div>
             <div id="panel" class="panel">Save a message as draft</div>
             <div id="panel" class="panel">Check saved a messages</div>
         </aside>
 
         <article>
             <div id="show">
-                <h1>Send email</h1>
-                <form action="/mail_App/UI/html/user_page.html">
-                    <p>Either you send message by individuals or group</p>
+                <h1>Send Email</h1>
+                <form action="/mail_App/UI/html/user_page.html" class="form">
+                    <p class="warning">Either you send message to individuals or group</p>
                     <div class="form-row">
-                        <label for="email-address">Enter email address you are sending to</label>
+                        <label for="email-address" class="label label-block">Enter email address you are sending to</label>
                         <input type="email" required name="email" id="">
                     </div>
                     <div class="form-row">
-                        <label for="add-user-to-group">Select Group</label>
+                        <label for="add-user-to-group" class="label label-block">Select Group</label>
                         <select required name="groups" id="">
                             <option value="" hidden>select a group</option>
                             <option value="">select a group</option>
                         </select>
                     </div>
                     <div class="form-row">
-                        <label for="email-title">Email Title</label>
+                        <label for="email-title" class="label label-block">Email Title</label>
                         <input type="text" required name="email-title" id="">
                     </div>
                     <div class="form-row">
-                        <label for="email-address">Enter Message</label>
+                        <label for="email-address" class="label label-block">Enter Message</label>
                         <textarea name="message" required id="" cols="30" rows="10"></textarea>
                     </div>
-                    <button>submit</button>
+                    <button class="btn">submit</button>
                 </form>
             </div>
 
             <div id="show" style="display:block">
-                <h1>View Inbox</h1>
-                <div id="messages" name="messages"><a href="/mail_App/UI/html/read_inbox.html"><h3>message1
-                    message1message1message1message1message1message1</h3></a></div>
-                <div id="messages" name="messages"><a href="/mail_App/UI/html/read_inbox.html"><h3>message2</h3></a></div>
-                <div id="messages" name="messages"><a href="/mail_App/UI/html/read_inbox.html"><h3>message3</h3></a></div>
+                <h1>View Messages</h1>
+                <div id="messages" name="messages"><a href="/mail_App/UI/html/read_inbox.html">
+                    <div class="message">
+                        <h3>Slack</h3>
+                        <h3>Your notification is now on mobile please you can change it from is...</h3>
+                    </div>
+                </a></div>
+                <div id="messages" name="messages"><a href="/mail_App/UI/html/read_inbox.html">
+                    <div class="message">
+                        <h3>Medium Daily Digest</h3>
+                        <h3>Your Article has just been posted you can udate it and write more ...</h3>
+                    </div>
+                </a></div>
+                <div id="messages" name="messages"><a href="/mail_App/UI/html/read_inbox.html">
+                    <div class="message">
+                        <h3>Slack</h3>
+                        <h3>Your notification is now on desktop please you can change it from ...</h3>
+                    </div>
+                </a></div>
             </div>
 
             <div id="show">
@@ -79,16 +89,16 @@
 
             <div id="show">
                 <h1>Save message as Draft</h1>
-                <form action="/mail_App/UI/html/user_page.html">
+                <form action="/mail_App/UI/html/user_page.html" class="form">
                     <div class="form-row">
-                        <label for="email-title">Email Title</label>
+                        <label for="email-title" class="label label-block">Email Title</label>
                         <input type="text" required name="email-title" id="">
                     </div>
                     <div class="form-row">
-                        <label for="email-address">Enter Message : </label>
+                        <label for="email-address" class="label label-block">Enter Message : </label>
                         <textarea name="message" id="" required cols="30" rows="10"></textarea>
                     </div>
-                    <button>submit</button>
+                    <button class="btn">submit</button>
                 </form>
             </div>
 
@@ -97,7 +107,6 @@
                 <table class="gridtable">
                     <thead>
                         <tr>
-                            <th>Message Id</th>
                             <th>Message Title</th>
                             <th>View</th>
                             <th>Delete</th>
@@ -105,19 +114,15 @@
                     </thead>
 
                     <tbody>
-                        <tr id="" class="">
-                            <td>
-                                <p>13342454</p>
-                            </td>
-
-                            <td>
+                        <tr id="" >
+                            <td class="tbody">
                                 <div id="messages" name="messages"><a href="/mail_App/UI/html/saved_messages.html">
-                                        <h3>message1</h3>
+                                        <h3>Notification from Andela</h3>
                                     </a></div>
                             </td>
 
-                            <td><a href="/">View to Save or Edit</a></td>
-                            <td><a href="/">Delete</a></td>
+                            <td class="tbody"><a href="/mail_App/UI/html/saved_messages.html">View to Save or Edit</a></td>
+                            <td class="tbody"><a href="/">Delete</a></td>
                         </tr>
                     </tbody>
                 </table>
