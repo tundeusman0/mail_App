@@ -13,9 +13,7 @@
         <div>
             <h1> <a style="text-decoration:none;color: #66fc02" href="/mail_App"> MAIL APP </a></h1>
         </div>
-        <div class="left">
-            <h3>Developers MAIL APP</h3>
-        </div>
+        
     </header>
     <div class="back-pages">
         <a href="/mail_App/UI/html/user_reset_password.html">Reset Password</a>
@@ -24,38 +22,41 @@
     </div>
     <div class="container">
         <div>
-            <p>Create a group</p>
+            <p class="warning">Create a group</p>
         </div>
-        <form action="/mail_App/UI/html/admin_create.html">
+        <form action="/mail_App/UI/html/admin_create.html" class="form">
             <div class="form-row">
-                <label for="create-group">Create New Group</label>
+                <label for="create-group" class="label label-block">Create New Group</label>
                 <input type="text" name="creategrp" required placeholder="Create New group" />
             </div>
-            <button>Submit</button>
+            <button class="btn">Submit</button>
         </form>
 
     </div>
 
     <div class="container">
         <div>
-            <p>Add a User to a group</p>
+            <p class="warning">Add a User to a group</p>
         </div>
-        <form action="/mail_App/UI/html/admin_create.html">
+        <form action="/mail_App/UI/html/admin_create.html" class="form">
             <div class="form-row">
-                <label for="add-to-group">Select User</label>
+                <label for="add-to-group" class="label label-block">Select User</label>
                 <select required name="users" id="users">
                     <option value="" hidden>select a User</option>
-                    <option  value="">select a user</option>
+                    <option  value="">User1</option>
+                    <option  value="">User2</option>
                 </select>
             </div>
             <div class="form-row">
-                <label for="add-user-to-group">Select Group</label>
+                <label for="add-user-to-group" class="label label-block">Select Group</label>
                 <select required name="groups" id="">
                     <option value="" hidden>select a group</option>
-                    <option value="">select a user</option>
+                    <option value="">Group1</option>
+                    <option value="">Group2</option>
+                    
                 </select>
             </div>
-            <button>Submit</button>
+            <button class="btn">Submit</button>
         </form>
     </div>
     <footer>

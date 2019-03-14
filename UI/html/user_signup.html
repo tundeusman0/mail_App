@@ -14,41 +14,35 @@
         <div>
             <h1> <a style="text-decoration:none;color: #66fc02" href="/mail_App"> MAIL APP </a></h1>
         </div>
-        <div class="left">
-            <h3>Developers MAIL APP</h3>
-        </div>
     </header>
     <div class="container">
-        <form action="/mail_App/UI/html/user_page.html">
+        <p class="warning">Sign Up Page</p>
+        <form action="/mail_App/UI/html/user_page.html" class="form">
             <div class="form-row">
-                <label for="email">Email</label>
+                <label for="email" class="label label-block">Email</label>
                 <input type="email" name="email" required placeholder="email@email.com" />
             </div>
             <div class="form-row">
-                <label for="first-name">First Name</label>
+                <label for="first-name" class="label label-block">First Name</label>
                 <input type="text" name="firstName" pattern="^[A-Za-z]+$" required placeholder="First Name" />
             </div>
             <div class="form-row">
-                <label for="last-name">Last Name</label>
+                <label for="last-name" class="label label-block">Last Name</label>
                 <input type="text" name="lastName" pattern="^[A-Za-z]+$" required placeholder="Last Name" />
             </div>
             <div class="form-row">
-                <label for="password">Password</label>
+                <label for="password" class="label label-block">Password</label>
                 <input type="password" name="password1" required placeholder="password here" />
             </div>
             <div class="form-row">
-                <label for="confirm-password">Confirm Password</label>
+                <label for="confirm-password" class="label label-block">Confirm Password</label>
                 <input type="password" name="password2" required placeholder="confirm password here" />
             </div>
-            <button>Submit</button>
+            <button class="btn">Submit</button>
         </form>
     </div>
     <footer>
-        <div>
-            <h1>Developer</h1>
-            <p>Idowu Usman Babatunde</p>
-            <p>contact: 08038062989</p>
-        </div>
+        
         <p>Copyright &copy; Andela Bootcamp</p>
 
     </footer>

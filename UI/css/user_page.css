@@ -38,18 +38,24 @@ article{
 }
 
 button{
-    margin-left: 50%;
+    margin-left: 40%;
 }
 
-select{
+/* select{
     height:25px;
     flex: 1;    
-}
+} */
 
 #show{
     display: none;
+    padding: 20px;
+    /* padding: 5px; */
 }
-
+.form 
+.btn {
+    /* margin: 2px auto 5px auto; */
+    margin: 2px auto auto 250px;
+}
 /* user reset password */
 .reset-pass{
     margin-top: 10px;
@@ -75,13 +81,14 @@ a:-webkit-any-link {
 }
 
 @media screen and (min-width: 768px) {
-    button{
+    /* button{
     margin-left: 20%;
     margin-right: 80%
-    }
+    } */
     article{
     width: 60%;
     margin-left: 330px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     }
+    
 }

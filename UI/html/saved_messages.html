@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MAIL_APP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./../css/main.css">
     <link rel="stylesheet" href="./../css/user_page.css">
+    <link rel="stylesheet" href="./../css/main.css">
+
 
 </head>
 <body>
@@ -14,9 +15,7 @@
         <div>
             <h1> <a style="text-decoration:none;color: #66fc02" href="/mail_App"> MAIL APP </a></h1>
         </div>
-        <div class="left">
-            <h3>Developers MAIL APP</h3>
-        </div>
+        
     </header>
     <div class="back-pages">
         <a href="/mail_App/UI/html/user_page.html">Back to User page</a>
@@ -25,28 +24,29 @@
     </div>
     <div class="container">
     
-        <form action="/mail_App/UI/html/saved_messages.html">
-            <p>Either you send message to individuals or group</p>
+        <form action="/mail_App/UI/html/saved_messages.html" class="form">
+            <p class="warning">Either you send message to individuals or group</p>
             <div class="form-row">
-                <label for="email-address">Enter email address you are sending to : </label>
+                <label for="email-address" class="label label-block">Email address you are sending to </label>
                 <input type="email" required name="email" id="">
             </div>
             <div class="form-row">
-                <label for="add-user-to-group">Select Group : </label>
+                <label for="add-user-to-group" class="label label-block">Select Group  </label>
+            
                 <select required name="groups" id="">
                     <option value="" hidden>select a group</option>
-                    <option value="">select a group</option>
+                    <option value="">Club group</option>
                 </select>
             </div>
             <div class="form-row">
-                <label for="email-title">Email Title</label>
+                <label for="email-title" class="label label-block">Email Title</label>
                 <input type="text" required name="email-title" id="">
             </div>
             <div class="form-row">
-                <label for="email-address">Enter Message : </label>
+                <label for="email-address" class="label label-block">Enter Message  </label>
                 <textarea name="message" required id="" cols="30" rows="10"></textarea>
             </div>
-            <button>Send</button>
+            <button class="btn">Send</button>
         </form>
 
     </div>
