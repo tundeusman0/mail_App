@@ -12,9 +12,9 @@ var _refactors = _interopRequireDefault(require("./refactors"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // export getUser function to get users in the seed
-var getUser = function getUser(user) {
-  var userId = _seed.users.filter(function (userz) {
-    return userz.email === user.email && userz.password === user.password;
+var getUser = function getUser(input) {
+  var userId = _seed.users.filter(function (user) {
+    return user.email === input.email && user.password === input.password;
   });
 
   return (0, _refactors.default)(userId, userId.length >= 1, "No User exist");
@@ -23,25 +23,25 @@ var getUser = function getUser(user) {
 
 exports.getUser = getUser;
 
-var addUser = function addUser(user) {
-  var duplicateUser = _seed.users.filter(function (userz) {
-    return userz.email === user.email;
+var addUser = function addUser(info) {
+  var duplicateUser = _seed.users.filter(function (user) {
+    return user.email === info.email;
   });
 
-  return (0, _refactors.default)((_seed.users.push(user), user), duplicateUser.length === 0, "User already exist");
+  return (0, _refactors.default)((_seed.users.push(info), info), duplicateUser.length === 0, "User already exist");
 }; //  export createMessage function to create message
 
 
 exports.addUser = addUser;
 
-var createMessage = function createMessage(message) {
-  var duplicateMessage = _seed.messages.filter(function (messagez) {
-    return messagez.id === message.id;
+var createMessage = function createMessage(data) {
+  var duplicateMessage = _seed.messages.filter(function (message) {
+    return message.id === data.id;
   });
 
   return new Promise(function (resolve, reject) {
     if (duplicateMessage.length === 0) {
-      resolve((_seed.messages.push(message), message));
+      resolve((_seed.messages.push(data), data));
     } else {
       reject("Message Id already exist");
     }
@@ -52,37 +52,37 @@ var createMessage = function createMessage(message) {
 exports.createMessage = createMessage;
 
 var getMessages = function getMessages() {
-  var messg = _seed.messages.filter(function (mssg) {
-    return mssg;
+  var gottenMessages = _seed.messages.filter(function (message) {
+    return message;
   });
 
-  return (0, _refactors.default)(messg, messg, "No Message");
+  return (0, _refactors.default)(gottenMessages, gottenMessages, "No Message");
 }; // exports getMessageById function to get a message by Id
 
 
 exports.getMessages = getMessages;
 
 var getMessageById = function getMessageById(id) {
-  var mssgId = _seed.messages.filter(function (mssg) {
-    return mssg.id === id;
+  var messageId = _seed.messages.filter(function (message) {
+    return message.id === id;
   });
 
-  return (0, _refactors.default)(mssgId, mssgId.length > 0, "No Message");
+  return (0, _refactors.default)(messageId, messageId.length > 0, "No Message");
 }; // exports deleteMessageById function to delete a message by Id
 
 
 exports.getMessageById = getMessageById;
 
 var deleteMessageById = function deleteMessageById(id) {
-  var mssgIndex = _seed.messages.findIndex(function (mssg) {
-    return mssg.id === id;
+  var messageIndex = _seed.messages.findIndex(function (message) {
+    return message.id === id;
   });
 
   return new Promise(function (resolve, reject) {
-    if (mssgIndex >= 0) {
-      var removedMesage = _seed.messages.splice(mssgIndex, 1);
+    if (messageIndex >= 0) {
+      var removedMessage = _seed.messages.splice(messageIndex, 1);
 
-      resolve(removedMesage);
+      resolve(removedMessage);
     } else {
       reject("No Mssg to be deleted");
     }

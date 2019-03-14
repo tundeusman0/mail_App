@@ -67,4 +67,3 @@ export const message = {
     parentMessageId: 105,
     status: "read",
 };
-
