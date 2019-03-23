@@ -19,7 +19,7 @@ describe('POST /api/v1/auth/signup', () => {
             .send(user)
             .expect(200)
             .expect((res) => {
-                expect(res.body.data[0].token).toEqual(user.token);
+                expect(typeof res.body.data[0].token).toBe("string");
             })
             .end((err) => {
                 if (err) return done(err);
@@ -51,7 +51,7 @@ describe('POST /api/v1/messages', () => {
             .send(message)
             .expect(200)
             .expect((res) => {
-                expect(res.body.data[0]).toEqual(message);
+                expect(res.body.data[0].subject).toEqual(message.subject);
             })
             .end((err) => {
                 if (err) return done(err);
@@ -60,11 +60,11 @@ describe('POST /api/v1/messages', () => {
     });
 
     // test POST message which should pass message not create with already exist id
-    it('should not create when id already exists', (done) => {
-        const { id } = messages[0];
+    it('should not create when subject already exists', (done) => {
+        const { subject } = messages[0];
         request(app)
             .post('/api/v1/messages')
-            .send({ id })
+            .send({ subject })
             .expect(400)
             .end((err) => {
                 if (err) return done(err);
@@ -129,10 +129,10 @@ describe('GET /api/v1/messages/:messageId', () => {
     // test GET message which should pass to get message by id
     it('should return message with the id', (done) => {
         request(app)
-            .get("/api/v1/messages/111")
+            .get("/api/v1/messages/102")
             .expect(200)
             .expect((res) => {
-                expect(res.body.data).toEqual([message]);
+                expect(res.body.data).toEqual([messages[0]]);
             })
             .end((err) => {
                 if (err) return done(err);
@@ -157,10 +157,10 @@ describe('DELETE /api/v1/messages/:messageId', () => {
     // test DELETE message which should pass to delete message by id
     it('should delete message with valid id', (done) => {
         request(app)
-            .delete("/api/v1/messages/111")
+            .delete("/api/v1/messages/102")
             .expect(200)
             .expect((res) => {
-                expect(res.body.data[0].message).toBe(message.message);
+                expect(res.body.data.length).toBe(1);
             })
             .end((err) => {
                 if (err) return done(err);

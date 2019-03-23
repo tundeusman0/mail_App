@@ -49,13 +49,13 @@ describe('utils', function () {
     (0, _utils.createMessage)(_seed.message).then(function (result) {
       (0, _expect.default)(result).toEqual(_seed.message);
     }).catch(function (err) {
-      (0, _expect.default)(err).toBe("Message Id already exist");
+      (0, _expect.default)(err).toBe("Message subject already exist");
     }).finally(done);
   }); // test createMessage which should not create a new message
 
   it('should not create a message', function (done) {
     (0, _utils.createMessage)(_seed.message).then(function () {}).catch(function (err) {
-      (0, _expect.default)(err).toBe("Message Id already exist");
+      (0, _expect.default)(err).toBe("Message subject already exist");
     }).finally(done);
   }); // test getMessages which should get all messages
 
@@ -95,13 +95,13 @@ describe('utils', function () {
     (0, _utils.deleteMessageById)(302).then(function (result) {
       (0, _expect.default)(_typeof(result)).toBe("object");
     }).catch(function (err) {
-      (0, _expect.default)(err).toBe("No Mssg to be deleted");
+      (0, _expect.default)(err).toBe("No Message to be deleted");
     }).finally(done);
   }); // test deleteMessageById which should not delete a message with a wrong Id
 
   it('should not delete Message by Id', function (done) {
     (0, _utils.deleteMessageById)(11).then(function () {}).catch(function (err) {
-      (0, _expect.default)(err).toBe("No Mssg to be deleted");
+      (0, _expect.default)(err).toBe("No Message to be deleted");
     }).finally(done);
   });
 });

@@ -10,13 +10,15 @@ var _app = _interopRequireDefault(require("../app"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 // test API
 // test POST signup
 describe('POST /api/v1/auth/signup', function () {
   // test POST signup which should pass user create
   it('should create a user', function (done) {
     (0, _supertest.default)(_app.default).post('/api/v1/auth/signup').send(_seed.user).expect(200).expect(function (res) {
-      (0, _expect.default)(res.body.data[0].token).toEqual(_seed.user.token);
+      (0, _expect.default)(_typeof(res.body.data[0].token)).toBe("string");
     }).end(function (err) {
       if (err) return done(err);
       done();
@@ -40,17 +42,17 @@ describe('POST /api/v1/messages', function () {
   // test POST message which should pass create a message
   it('should create a new message', function (done) {
     (0, _supertest.default)(_app.default).post('/api/v1/messages').send(_seed.message).expect(200).expect(function (res) {
-      (0, _expect.default)(res.body.data[0]).toEqual(_seed.message);
+      (0, _expect.default)(res.body.data[0].subject).toEqual(_seed.message.subject);
     }).end(function (err) {
       if (err) return done(err);
       done();
     });
   }); // test POST message which should pass message not create with already exist id
 
-  it('should not create when id already exists', function (done) {
-    var id = _seed.messages[0].id;
+  it('should not create when subject already exists', function (done) {
+    var subject = _seed.messages[0].subject;
     (0, _supertest.default)(_app.default).post('/api/v1/messages').send({
-      id: id
+      subject: subject
     }).expect(400).end(function (err) {
       if (err) return done(err);
       done();
@@ -97,8 +99,8 @@ describe('GET /api/v1/messages/sent', function () {
 describe('GET /api/v1/messages/:messageId', function () {
   // test GET message which should pass to get message by id
   it('should return message with the id', function (done) {
-    (0, _supertest.default)(_app.default).get("/api/v1/messages/111").expect(200).expect(function (res) {
-      (0, _expect.default)(res.body.data).toEqual([_seed.message]);
+    (0, _supertest.default)(_app.default).get("/api/v1/messages/102").expect(200).expect(function (res) {
+      (0, _expect.default)(res.body.data).toEqual([_seed.messages[0]]);
     }).end(function (err) {
       if (err) return done(err);
       done();
@@ -116,8 +118,8 @@ describe('GET /api/v1/messages/:messageId', function () {
 describe('DELETE /api/v1/messages/:messageId', function () {
   // test DELETE message which should pass to delete message by id
   it('should delete message with valid id', function (done) {
-    (0, _supertest.default)(_app.default).delete("/api/v1/messages/111").expect(200).expect(function (res) {
-      (0, _expect.default)(res.body.data[0].message).toBe(_seed.message.message);
+    (0, _supertest.default)(_app.default).delete("/api/v1/messages/102").expect(200).expect(function (res) {
+      (0, _expect.default)(res.body.data.length).toBe(1);
     }).end(function (err) {
       if (err) return done(err);
       done();

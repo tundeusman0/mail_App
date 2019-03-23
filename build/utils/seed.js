@@ -57,8 +57,7 @@ var user = {
   password: 'password',
   id: 333,
   firstName: "tunde",
-  lastName: "usman",
-  token: "briegbiur"
+  lastName: "usman"
 }; // single message dummy data
 
 exports.user = user;

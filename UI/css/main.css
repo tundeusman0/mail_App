@@ -59,19 +59,11 @@ nav ul{
 }
 
 /* licks link */
+
 nav ul li a{
-    margin: 0px 30px 50px 30px;
     text-decoration: none;
     font-weight: bold;
-    color: #00606d;
-    border-radius: 10px;
-    margin-top: 20px;
     font-size: 25px;
-}
-
-li a:hover{
-    color: #016907;
-    font-size: 31px;
 }
 
 .left{
@@ -220,12 +212,6 @@ footer > p {
     html{
         height:100%;
     }
-    
-    /* licks */
-    nav ul li a{
-        background-color: #dfe6d8;
-        opacity: 0.75;
-    }
 
     /* certered message */
     .centered-note{
@@ -263,6 +249,7 @@ footer > p {
     text-transform: uppercase;
     padding: 11px 30px;
     margin-bottom: 22px;
+    margin-right: 22px;
     font-size: 14px;
     font-family: 'Varela Round', sans-serif;
 }

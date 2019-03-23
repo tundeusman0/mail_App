@@ -1,7 +1,7 @@
 # mail_App
 Mail App is an application that allows users to exchange messages/information
 
-[![Build Status](https://travis-ci.com/tundeusman0/mail_App.svg?branch=gh-pages)](https://travis-ci.com/tundeusman0/mail_App)
+[![Build Status](https://travis-ci.com/tundeusman0/mail_App.svg?branch=develop)](https://travis-ci.com/tundeusman0/mail_App)
 [![Coverage Status](https://coveralls.io/repos/github/tundeusman0/mail_App/badge.svg?branch=bg-travis-build-error-164516577)](https://coveralls.io/github/tundeusman0/mail_App?branch=bg-travis-build-error-164516577)
 [![Maintainability](https://api.codeclimate.com/v1/badges/97c54f2847f698fa0e5b/maintainability)](https://codeclimate.com/github/tundeusman0/mail_App/maintainability)
 

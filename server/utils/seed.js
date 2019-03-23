@@ -55,7 +55,6 @@ export const user = {
     id: 333,
     firstName: "tunde",
     lastName: "usman",
-    token: "briegbiur",
 };
 
 // single message dummy data
@@ -67,4 +66,3 @@ export const message = {
     parentMessageId: 105,
     status: "read",
 };
-
