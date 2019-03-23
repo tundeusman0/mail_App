@@ -6,15 +6,14 @@ import messages from './routes/messages_routes';
 // init App
 const app = express();
 
-
 // heroku Port
 const port = process.env.PORT || 3000;
 
 // body Parser middleware
 app.use(bodyParser.json());
 
-app.use('/', user);
-app.use('/', messages);
+app.use('/api/v1/auth/', user);
+app.use('/api/v1/messages', messages);
 
 app.listen(port, () => {
     console.log(`Strated up at port ${port}`);

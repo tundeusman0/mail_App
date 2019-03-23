@@ -21,8 +21,8 @@ var app = (0, _express.default)(); // heroku Port
 var port = process.env.PORT || 3000; // body Parser middleware
 
 app.use(_bodyParser.default.json());
-app.use('/', _user_routes.default);
-app.use('/', _messages_routes.default);
+app.use('/api/v1/auth/', _user_routes.default);
+app.use('/api/v1/messages', _messages_routes.default);
 app.listen(port, function () {
   console.log("Strated up at port ".concat(port));
 });

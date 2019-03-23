@@ -36,14 +36,14 @@ exports.addUser = addUser;
 
 var createMessage = function createMessage(data) {
   var duplicateMessage = _seed.messages.filter(function (message) {
-    return message.id === data.id;
+    return message.subject === data.subject;
   });
 
   return new Promise(function (resolve, reject) {
     if (duplicateMessage.length === 0) {
       resolve((_seed.messages.push(data), data));
     } else {
-      reject("Message Id already exist");
+      reject("Message subject already exist");
     }
   });
 }; // exports getMessages function to get all messages
@@ -84,7 +84,7 @@ var deleteMessageById = function deleteMessageById(id) {
 
       resolve(removedMessage);
     } else {
-      reject("No Mssg to be deleted");
+      reject("No Message to be deleted");
     }
   });
 };

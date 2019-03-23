@@ -14,12 +14,12 @@ export const addUser = (info) => {
 };
 //  export createMessage function to create message
 export const createMessage = (data) => {
-    const duplicateMessage = messages.filter(message => message.id === data.id);
+    const duplicateMessage = messages.filter(message => message.subject === data.subject);
     return new Promise((resolve, reject) => {
         if (duplicateMessage.length === 0) {
             resolve((messages.push(data), data));
         } else {
-            reject("Message Id already exist");
+            reject("Message subject already exist");
         }
     });
 };
@@ -44,7 +44,7 @@ export const deleteMessageById = (id) => {
             const removedMessage = messages.splice(messageIndex, 1);
             resolve(removedMessage);
         } else {
-            reject("No Mssg to be deleted");
+            reject("No Message to be deleted");
         }
     });
 };
