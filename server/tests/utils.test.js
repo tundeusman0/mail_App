@@ -57,7 +57,7 @@ describe('utils', () => {
         createMessage(message).then((result) => {
             expect(result).toEqual(message);
         }).catch((err) => {
-            expect(err).toBe("Message Id already exist");
+            expect(err).toBe("Message subject already exist");
         }).finally(done);
     });
 
@@ -66,7 +66,7 @@ describe('utils', () => {
         createMessage(message).then(() => {
 
         }).catch((err) => {
-            expect(err).toBe("Message Id already exist");
+            expect(err).toBe("Message subject already exist");
         }).finally(done);
     });
 
@@ -111,7 +111,7 @@ describe('utils', () => {
         deleteMessageById(302).then((result) => {
             expect(typeof result).toBe("object");
         }).catch((err) => {
-            expect(err).toBe("No Mssg to be deleted");
+            expect(err).toBe("No Message to be deleted");
         }).finally(done);
     });
 
@@ -120,7 +120,7 @@ describe('utils', () => {
         deleteMessageById(11).then(() => {
 
         }).catch((err) => {
-            expect(err).toBe("No Mssg to be deleted");
+            expect(err).toBe("No Message to be deleted");
         }).finally(done);
     });
 });

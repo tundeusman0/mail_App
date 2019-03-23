@@ -55,7 +55,6 @@ export const user = {
     id: 333,
     firstName: "tunde",
     lastName: "usman",
-    token: "briegbiur",
 };
 
 // single message dummy data
