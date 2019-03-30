@@ -2,11 +2,13 @@
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
-var _v = _interopRequireDefault(require("uuid/v1"));
+var _v = _interopRequireDefault(require("uuid/v4"));
 
 var EmailValidator = _interopRequireWildcard(require("email-validator"));
 
-var _utils = require("../utils/utils");
+var _utils = require("./../utils/utils");
+
+var _seed = require("./../utils/seed");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -24,18 +26,11 @@ exports.signUp = function (req, res) {
     id: id
   }, "okay");
 
-  var user = {
-    id: id,
-    email: email,
-    password: password,
-    firstName: firstName,
-    lastName: lastName,
-    token: token
-  };
   var emailIsValid = EmailValidator.validate(email);
+  var user = new _utils.User(id, email, firstName, lastName, password, token);
 
   if (emailIsValid) {
-    (0, _utils.addUser)(user).then(function () {
+    _seed.users.newUser(user).then(function () {
       res.status(200).send({
         status: 200,
         data: [{
@@ -67,7 +62,7 @@ exports.signIn = function (req, res) {
   var emailIsValid = EmailValidator.validate(email);
 
   if (emailIsValid) {
-    (0, _utils.getUser)(login).then(function (user) {
+    _seed.users.getUser(login).then(function (user) {
       var token = user[0].token;
       res.status(200).send({
         status: 200,

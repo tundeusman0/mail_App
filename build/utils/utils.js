@@ -3,90 +3,116 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deleteMessageById = exports.getMessageById = exports.getMessages = exports.createMessage = exports.addUser = exports.getUser = void 0;
+exports.Messages = exports.Message = exports.Users = exports.User = void 0;
 
-var _seed = require("./seed");
+var _refactors = require("./refactors");
 
-var _refactors = _interopRequireDefault(require("./refactors"));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var User = function User(id, email, firstName, lastName, password, token) {
+  _classCallCheck(this, User);
 
-// export getUser function to get users in the seed
-var getUser = function getUser(input) {
-  var userId = _seed.users.filter(function (user) {
-    return user.email === input.email && user.password === input.password;
-  });
-
-  return (0, _refactors.default)(userId, userId.length >= 1, "No User exist");
-}; //  export addUser function to add users
-
-
-exports.getUser = getUser;
-
-var addUser = function addUser(info) {
-  var duplicateUser = _seed.users.filter(function (user) {
-    return user.email === info.email;
-  });
-
-  return (0, _refactors.default)((_seed.users.push(info), info), duplicateUser.length === 0, "User already exist");
-}; //  export createMessage function to create message
-
-
-exports.addUser = addUser;
-
-var createMessage = function createMessage(data) {
-  var duplicateMessage = _seed.messages.filter(function (message) {
-    return message.subject === data.subject;
-  });
-
-  return new Promise(function (resolve, reject) {
-    if (duplicateMessage.length === 0) {
-      resolve((_seed.messages.push(data), data));
-    } else {
-      reject("Message subject already exist");
-    }
-  });
-}; // exports getMessages function to get all messages
-
-
-exports.createMessage = createMessage;
-
-var getMessages = function getMessages() {
-  var gottenMessages = _seed.messages.filter(function (message) {
-    return message;
-  });
-
-  return (0, _refactors.default)(gottenMessages, gottenMessages, "No Message");
-}; // exports getMessageById function to get a message by Id
-
-
-exports.getMessages = getMessages;
-
-var getMessageById = function getMessageById(id) {
-  var messageId = _seed.messages.filter(function (message) {
-    return message.id === id;
-  });
-
-  return (0, _refactors.default)(messageId, messageId.length > 0, "No Message");
-}; // exports deleteMessageById function to delete a message by Id
-
-
-exports.getMessageById = getMessageById;
-
-var deleteMessageById = function deleteMessageById(id) {
-  var messageIndex = _seed.messages.findIndex(function (message) {
-    return message.id === id;
-  });
-
-  return new Promise(function (resolve, reject) {
-    if (messageIndex >= 0) {
-      var removedMessage = _seed.messages.splice(messageIndex, 1);
-
-      resolve(removedMessage);
-    } else {
-      reject("No Message to be deleted");
-    }
-  });
+  this.id = id;
+  this.email = email;
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.password = password;
+  this.token = token;
 };
 
-exports.deleteMessageById = deleteMessageById;
+exports.User = User;
+
+var Users = function Users() {
+  var _this = this;
+
+  _classCallCheck(this, Users);
+
+  this.users = [];
+
+  this.newUser = function (info) {
+    var duplicateUser = _this.users.filter(function (user) {
+      return user.email === info.email;
+    });
+
+    return new Promise(function (resolve, reject) {
+      if (duplicateUser.length === 0) {
+        resolve(_this.users.push(info));
+      } else {
+        reject("User already exist");
+      }
+    });
+  };
+
+  this.getUser = function (info) {
+    var userGot = _this.users.filter(function (user) {
+      return user.email === info.email && user.password === info.password;
+    });
+
+    return (0, _refactors.getPromise)(userGot, userGot.length >= 1, "No User exist");
+  };
+};
+
+exports.Users = Users;
+
+var Message = function Message(id, createdOn, subject, message, parentMessageId, status, senderId, receiverId) {
+  _classCallCheck(this, Message);
+
+  this.id = id;
+  this.createdOn = createdOn;
+  this.subject = subject;
+  this.message = message;
+  this.parentMessageId = parentMessageId;
+  this.status = status;
+  this.senderId = senderId, this.receiverId = receiverId;
+};
+
+exports.Message = Message;
+
+var Messages = function Messages() {
+  var _this2 = this;
+
+  _classCallCheck(this, Messages);
+
+  this.messages = [];
+
+  this.createMessage = function (data) {
+    var duplicateMessage = _this2.messages.filter(function (message) {
+      return message.subject === data.subject;
+    }); // return getPromise(this.messages.push(data), duplicateMessage.length === 0, "Message subject already exist");
+
+
+    return new Promise(function (resolve, reject) {
+      if (duplicateMessage.length === 0) {
+        resolve(_this2.messages.push(data));
+      } else {
+        reject("Message subject already exist");
+      }
+    });
+  };
+
+  this.getMessages = function () {
+    var messagesGot = _this2.messages.filter(function (message) {
+      return message;
+    });
+
+    return (0, _refactors.getPromise)(messagesGot, messagesGot, "No Message");
+  };
+
+  this.getMessageById = function (id) {
+    var messageId = _this2.messages.filter(function (message) {
+      return message.id === id;
+    });
+
+    return (0, _refactors.getPromise)(messageId, messageId.length > 0, "No Message");
+  };
+
+  this.deleteMessageById = function (id) {
+    var messageIndex = _this2.messages.findIndex(function (message) {
+      return message.id === id;
+    });
+
+    return (0, _refactors.getDeletePromise)(messageIndex, _this2.messages);
+  };
+};
+
+exports.Messages = Messages;
