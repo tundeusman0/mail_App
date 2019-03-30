@@ -1,46 +1,35 @@
 "use strict";
 
-var _v = _interopRequireDefault(require("uuid/v1"));
+var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _moment = _interopRequireDefault(require("moment"));
 
-var _utils = require("../utils/utils");
+var _utils = require("./../utils/utils");
+
+var _seed = require("./../utils/seed");
+
+var _statusPicker = _interopRequireDefault(require("./../utils/statusPicker"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var _require = require('random-picker'),
-    Picker = _require.Picker;
-
-var statusPicker = new Picker();
-statusPicker.option('read');
-statusPicker.option('draft');
-statusPicker.option('sent');
-statusPicker.option('unread');
 
 exports.messages = function (req, res) {
   var _req$body = req.body,
       subject = _req$body.subject,
       message = _req$body.message;
-  var status = statusPicker.pick();
+
+  var status = _statusPicker.default.pick();
+
   var createdOn = (0, _moment.default)().format('LLL');
   var id = (0, _v.default)();
   var parentMessageId = (0, _v.default)();
-  var messages = {
-    id: id,
-    createdOn: createdOn,
-    subject: subject,
-    message: message,
-    parentMessageId: parentMessageId,
-    status: status
-  };
-  (0, _utils.createMessage)(messages).then(function (message) {
+  var info = new _utils.Message(id, createdOn, subject, message, parentMessageId, status);
+
+  _seed.messages.createMessage(info).then(function (message) {
     res.status(200).send({
       status: 200,
-      data: [_objectSpread({}, message)]
+      data: [{
+        info: info
+      }]
     });
   }).catch(function (err) {
     res.status(400).send({
@@ -51,7 +40,7 @@ exports.messages = function (req, res) {
 };
 
 exports.getMessage = function (req, res) {
-  (0, _utils.getMessages)().then(function (message) {
+  _seed.messages.getMessages().then(function (message) {
     res.status(200).send({
       status: 200,
       data: message
@@ -65,7 +54,7 @@ exports.getMessage = function (req, res) {
 };
 
 exports.unreadMessage = function (req, res) {
-  (0, _utils.getMessages)().then(function (messages) {
+  _seed.messages.getMessages().then(function (messages) {
     var unread = messages.filter(function (message) {
       return message.status === "unread";
     });
@@ -90,7 +79,7 @@ exports.unreadMessage = function (req, res) {
 };
 
 exports.sentMessage = function (req, res) {
-  (0, _utils.getMessages)().then(function (messages) {
+  _seed.messages.getMessages().then(function (messages) {
     var unsent = messages.filter(function (message) {
       return message.status === "sent";
     });
@@ -115,8 +104,9 @@ exports.sentMessage = function (req, res) {
 };
 
 exports.messagesById = function (req, res) {
-  var id = Number(req.params.messageId);
-  (0, _utils.getMessageById)(id).then(function (message) {
+  var id = req.params.messageId;
+
+  _seed.messages.getMessageById(id).then(function (message) {
     res.status(200).send({
       status: 200,
       data: message
@@ -130,8 +120,9 @@ exports.messagesById = function (req, res) {
 };
 
 exports.deleteMessagesById = function (req, res) {
-  var id = Number(req.params.messageId);
-  (0, _utils.deleteMessageById)(id).then(function (deleted) {
+  var id = req.params.messageId;
+
+  _seed.messages.deleteMessageById(id).then(function (deleted) {
     var message = deleted[0].message;
     res.status(200).send({
       status: 200,

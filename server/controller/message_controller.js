@@ -1,16 +1,9 @@
-import uuidv1 from "uuid/v1";
+import uuidv4 from "uuid/v4";
 import moment from "moment";
-import {
-    createMessage, getMessageById, getMessages, deleteMessageById,
-} from "../utils/utils";
+import { Message } from "../utils/utils";
+import { messages } from "../utils/seed";
 
-const { Picker } = require('random-picker');
-
-const statusPicker = new Picker();
-statusPicker.option('read');
-statusPicker.option('draft');
-statusPicker.option('sent');
-statusPicker.option('unread');
+import statusPicker from "../utils/statusPicker";
 
 exports.messages = (req, res) => {
     const {
@@ -18,16 +11,14 @@ exports.messages = (req, res) => {
     } = req.body;
     const status = statusPicker.pick();
     const createdOn = moment().format('LLL');
-    const id = uuidv1();
-    const parentMessageId = uuidv1();
-    const messages = {
-        id, createdOn, subject, message, parentMessageId, status,
-    };
-    createMessage(messages).then((message) => {
+    const id = uuidv4();
+    const parentMessageId = uuidv4();
+    const info = new Message(id, createdOn, subject, message, parentMessageId, status);
+    messages.createMessage(info).then(() => {
         res.status(200).send({
             status: 200,
             data: [{
-                ...message,
+                info,
             }],
         });
     }).catch((err) => {
@@ -39,7 +30,7 @@ exports.messages = (req, res) => {
 };
 
 exports.getMessage = (req, res) => {
-    getMessages().then((message) => {
+    messages.getMessages().then((message) => {
         res.status(200).send({
             status: 200,
             data: message,
@@ -53,7 +44,7 @@ exports.getMessage = (req, res) => {
 };
 
 exports.unreadMessage = (req, res) => {
-    getMessages().then((messages) => {
+    messages.getMessages().then((messages) => {
         const unread = messages.filter(message => message.status === "unread");
         if (unread.length > 0) {
             res.status(200).send({
@@ -75,7 +66,7 @@ exports.unreadMessage = (req, res) => {
 };
 
 exports.sentMessage = (req, res) => {
-    getMessages().then((messages) => {
+    messages.getMessages().then((messages) => {
         const unsent = messages.filter(message => message.status === "sent");
         if (unsent.length > 0) {
             res.status(200).send({
@@ -97,8 +88,8 @@ exports.sentMessage = (req, res) => {
 };
 
 exports.messagesById = (req, res) => {
-    const id = Number(req.params.messageId);
-    getMessageById(id).then((message) => {
+    const id = req.params.messageId;
+    messages.getMessageById(id).then((message) => {
         res.status(200).send({
             status: 200,
             data: message,
@@ -112,8 +103,8 @@ exports.messagesById = (req, res) => {
 };
 
 exports.deleteMessagesById = (req, res) => {
-    const id = Number(req.params.messageId);
-    deleteMessageById(id).then((deleted) => {
+    const id = req.params.messageId;
+    messages.deleteMessageById(id).then((deleted) => {
         const { message } = deleted[0];
         res.status(200).send({
             status: 200,

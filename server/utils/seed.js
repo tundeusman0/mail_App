@@ -1,68 +1,38 @@
+import uuidv4 from "uuid/v4";
+import {
+ User, Users, Message, Messages,
+} from "./utils";
 // dummy data for users
-export const users = [{
-    id: 101,
-    email: 'tundeusman1@gmail.com',
-    firstName: 'Tunde',
-    lastName: 'Usman',
-    password: 'Userpassword1',
-    token: "gvweyuywyg",
-}, {
-    id: 102,
-    email: 'tundeusman2@gmail.com',
-    firstName: 'Monsurah',
-    lastName: 'Ishaq',
-    password: 'Userpassword2',
-    token: "uhewfhoir",
-}];
+const seedUser1 = new User(101, 'tundeusman1@gmail.com',
+        'Tunde', 'Usman', 'Userpassword1', "gvweyuywyg");
+const seedUser2 = new User(102, 'tundeusman2@gmail.com',
+    'Monsurah', 'Ishaq', 'Userpassword2', "uhewfhoir");
+const seedUser3 = new User(333, 'example@gmail.com',
+    "tunde", "usman", "password");
 
-// dummy data for messages
-export const messages = [
-    {
-        id: 102,
-        createdOn: "2/03/2019",
-        subject: 'I love Andela',
-        message: 'Tunde usman love andela so much',
-        parentMessageId: 112,
-        status: "draft",
-        senderId: 102,
-        receiverId: null,
-    }, {
-        id: 202,
-        createdOn: "2/03/2019",
-        subject: 'My love for Andela',
-        message: 'Andela is the best place where i will love to work',
-        parentMessageId: 224,
-        status: "unread",
-        senderId: 101,
-        receiverId: 201,
-    },
-    {
-        id: 302,
-        createdOn: "6/03/2019",
-        subject: 'My love for Andela',
-        message: 'unto the matter',
-        parentMessageId: 224,
-        status: "sent",
-        senderId: 201,
-        receiverId: 101,
-    },
-];
+export const users = new Users();
 
-// single user dummy data
-export const user = {
-    email: 'example@gmail.com',
-    password: 'password',
-    id: 333,
-    firstName: "tunde",
-    lastName: "usman",
-};
+users.newUser(seedUser1)
+    .then(okay => okay).catch(err => console.log(err));
+users.newUser(seedUser2)
+    .then(okay => okay).catch(err => console.log(err));
+users.newUser(seedUser3)
+.then(okay => okay).catch(err => console.log(err));
 
-// single message dummy data
-export const message = {
-    id: 111,
-    createdOn: "2/04/2019",
-    subject: 'I love my life',
-    message: 'Tunde usman loves his life',
-    parentMessageId: 105,
-    status: "read",
-};
+const seedMessage1 = new Message(uuidv4(), "2/03/2019", 'I love Andela',
+    'Tunde usman love andela so much', 112, "draft", uuidv4(), null);
+const seedMessage2 = new Message(uuidv4(), "2/03/2019", 'My love for Andela',
+    'Andela is the best place where i will love to work', 224, "unread", 101, 201);
+const seedMessage3 = new Message(uuidv4(), "2/04/2019", 'I love my life',
+    'Tunde usman loves his life', 105, "sent");
+export const messages = new Messages();
+
+messages.createMessage(seedMessage1)
+.then(okay => okay).catch(err => err);
+messages.createMessage(seedMessage2).then(okay => okay).catch(err => err);
+messages.createMessage(seedMessage3).then(okay => okay).catch(err => err);
+
+export const user = new User(101, "testing@gmail.com", "Tunde", "usman", "password", "token");
+export const login = { email: "testing@gmail.com", password: "password" };
+export const message = new Message(566, "6-7-28", 'Fake subject', 'Fake Message');
+export const fakeLogin = { email: "fake@gamil.com", password: "fakePassword" };

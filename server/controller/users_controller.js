@@ -1,23 +1,19 @@
 import jwt from "jsonwebtoken";
-import uuidv1 from "uuid/v1";
+import uuidv4 from "uuid/v4";
 import * as EmailValidator from 'email-validator';
-import {
-    addUser, getUser,
-} from "../utils/utils";
+import { User } from "../utils/utils";
+import { users } from "../utils/seed";
 
 exports.signUp = (req, res) => {
     const {
         email, password, firstName, lastName,
     } = req.body;
-    const id = uuidv1();
+    const id = uuidv4();
     const token = jwt.sign({ id }, "okay");
-    const user = {
-        id, email, password, firstName, lastName, token,
-    };
     const emailIsValid = EmailValidator.validate(email);
-
+    const user = new User(id, email, firstName, lastName, password, token);
     if (emailIsValid) {
-        addUser(user).then(() => {
+        users.newUser(user).then(() => {
             res.status(200).send({
                 status: 200,
                 data: [{
@@ -45,7 +41,7 @@ exports.signIn = (req, res) => {
     };
     const emailIsValid = EmailValidator.validate(email);
     if (emailIsValid) {
-        getUser(login).then((user) => {
+        users.getUser(login).then((user) => {
             const { token } = user[0];
             res.status(200).send({
                 status: 200,
